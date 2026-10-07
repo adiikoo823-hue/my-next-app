@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --muted: #8b949e;
+  --border: #30363d;
+  --green: #238636;
 }
 
 @theme inline {
@@ -12,15 +16,221 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 24px 24px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgb(31 111 235 / 8%), transparent 43%),
+    var(--background);
+}
+
+.topbar {
+  display: flex;
+  width: min(100%, 1040px);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+}
+
+.brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+.brand-mark svg {
+  width: 21px;
+  height: 21px;
+}
+
+.topbar-note,
+.page-footer {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.signin-card {
+  display: flex;
+  width: min(100%, 380px);
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 0;
+  text-align: center;
+}
+
+.card-emblem {
+  display: grid;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 26px;
+  place-items: center;
+  color: #f0f6fc;
+}
+
+.card-emblem svg {
+  width: 54px;
+  height: 54px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #58a6ff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.signin-card h1 {
+  margin: 0;
+  font-size: clamp(26px, 5vw, 32px);
+  font-weight: 550;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+
+.description {
+  max-width: 320px;
+  margin: 14px 0 28px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.github-button {
+  display: inline-flex;
+  width: 100%;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  border: 1px solid rgb(240 246 252 / 10%);
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.github-button:hover:not(:disabled) {
+  background: #2ea043;
+}
+
+.github-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.github-button:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 3px;
+}
+
+.github-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.button-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.secondary-button {
+  border-color: var(--border);
+  background: #21262d;
+}
+
+.secondary-button:hover:not(:disabled) {
+  background: #30363d;
+}
+
+.privacy-note {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+}
+
+.page-footer a {
+  color: #58a6ff;
+}
+
+.page-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-dot {
+  color: #484f58;
+}
+
+@media (max-width: 480px) {
+  .page-shell {
+    padding: 20px 20px 18px;
+  }
+
+  .topbar-note {
+    font-size: 11px;
+  }
+
+  .signin-card {
+    padding: 60px 0;
+  }
+
+  .page-footer {
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
